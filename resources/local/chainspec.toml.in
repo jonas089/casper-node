@@ -143,7 +143,7 @@ max_timestamp_leeway = '5 seconds'
 # 16 mB for testing
 max_memory = 256
 # Max stack height (native WebAssembly stack limiter).
-max_stack_height = 500
+max_stack_height = 500000
 
 [wasm.storage_costs]
 # Gas charged per byte stored in the global state.
