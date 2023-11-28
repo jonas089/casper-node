@@ -4,6 +4,7 @@ pub mod account;
 pub mod runtime;
 pub mod storage;
 pub mod system;
+pub mod miden;
 
 use alloc::{
     alloc::{alloc, Layout},

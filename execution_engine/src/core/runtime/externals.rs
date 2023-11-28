@@ -15,7 +15,7 @@ use casper_types::{
 
 use super::{args::Args, Error, Runtime};
 use crate::{
-    core::resolvers::v1_function_index::FunctionIndex,
+    core::{resolvers::v1_function_index::FunctionIndex, runtime::miden},
     shared::host_function_costs::{Cost, HostFunction, DEFAULT_HOST_FUNCTION_NEW_DICTIONARY},
     storage::global_state::StateReader,
 };
@@ -1096,6 +1096,19 @@ where
                 let result = self.enable_contract_version(contract_package_hash, contract_hash)?;
 
                 Ok(Some(RuntimeValue::I32(api_error::i32_from(result))))
+            }
+            FunctionIndex::MidenVerifier => {
+                let (out_ptr, out_size) = Args::parse(args)?;
+                self.charge_host_function_call(
+                    &host_function_costs.miden_verifier,
+                    [out_ptr, out_size]
+                )?;
+                let response: u8 = miden::verify();
+                // [0u8] => invalid, [1u8] => valid
+                self.try_get_memory()?
+                    .set(out_ptr, &vec![response])
+                    .map_err(|error| Error::Interpreter(error.into()))?;
+                Ok(Some(RuntimeValue::I32(0)))
             }
         }
     }
