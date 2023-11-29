@@ -215,7 +215,7 @@ create_contract_user_group = { cost = 200, arguments = [0, 0, 0, 0, 0, 0, 0, 0] 
 create_purse = { cost = 2_500_000_000, arguments = [0, 0] }
 disable_contract_version = { cost = 200, arguments = [0, 0, 0, 0] }
 enable_contract_version = { cost = 200, arguments = [0, 0, 0, 0] }
-miden_verifier = {const = 200, arguments = [0,0]}
+miden_verifier = { cost = 200, arguments = [0,0]}
 get_balance = { cost = 3_800, arguments = [0, 0, 0] }
 get_blocktime = { cost = 330, arguments = [0] }
 get_caller = { cost = 380, arguments = [0] }
