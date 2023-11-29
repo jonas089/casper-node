@@ -806,7 +806,7 @@ extern "C" {
         contract_hash_size: usize,
     ) -> i32;
 
-    pub fn miden_verifier(
+    pub fn casper_miden_verifier(
         out_ptr: *const u8,
         out_size: usize
     ) -> i32;
