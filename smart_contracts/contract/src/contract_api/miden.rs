@@ -4,7 +4,7 @@ use casper_types::api_error;
 pub fn miden_verifier() -> [u8;1]{
     let mut ret = [0; 1];
     let result = unsafe {
-        ext_ffi::miden_verifier(
+        ext_ffi::casper_miden_verifier(
             ret.as_mut_ptr(),
             1,
         )
