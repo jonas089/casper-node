@@ -1,22 +1,18 @@
 use crate::{ext_ffi, unwrap_or_revert::UnwrapOrRevert};
 use casper_types::api_error;
-use alloc::{collections::BTreeSet, vec, vec::Vec};
+use alloc::{collections::BTreeSet, vec, vec::Vec, string::String};
 
-pub fn circom_verifier() -> Vec<u8>{
-    let mut circuit_bytes_ptr: Vec<u8> = Vec::new();
-    let mut proof_points_ptr: Vec<u8> = Vec::new();
-    let mut inputs_ptr: Vec<u8> = Vec::new();
-    let mut gamma_abc_g1_ptr: Vec<u8> = Vec::new();
+pub fn circom_verifier<T: AsRef<[u8]>>(circuit_bytes: T, proof_points: T, inputs: T, gamma_abc_g1: T) -> Vec<u8>{
     let mut res: Vec<u8> = Vec::new();
     let result = unsafe {
         ext_ffi::casper_circom_verifier(
-            circuit_bytes_ptr.as_mut_ptr(),
+            circuit_bytes.as_ref().as_ptr(),
             1,
-            proof_points_ptr.as_mut_ptr(),
+            proof_points.as_ref().as_ptr(),
             1,
-            inputs_ptr.as_mut_ptr(),
+            inputs.as_ref().as_ptr(),
             1,
-            gamma_abc_g1_ptr.as_mut_ptr(),
+            gamma_abc_g1.as_ref().as_ptr(),
             1,
             res.as_mut_ptr(),
             1
