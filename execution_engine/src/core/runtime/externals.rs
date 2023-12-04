@@ -1130,7 +1130,7 @@ where
                 let proof_points = self.t_from_mem(proof_points_ptr, proof_points_size)?;
                 let inputs = self.t_from_mem(inputs_ptr, inputs_size)?;
                 let gamma_abc_g1 = self.t_from_mem(gamma_abc_g1_ptr, gamma_abc_g1_size)?;
-                let result: bool = circom::verify(
+                let result: Vec<u8> = circom::verify(
                     circuit_bytes,
                     proof_points, 
                     inputs, 

@@ -1,8 +1,6 @@
 mod types;
-use std::io::{BufReader, Cursor};
-
+use std::io::prelude::*;
 use types::{CircomProof, Groth16Proof, Groth16VerifyingKey};
-
 use ark_groth16::{Groth16, ProvingKey};
 use ark_crypto_primitives::snark::SNARK;
 use num_bigint::BigInt;
@@ -23,9 +21,9 @@ type GrothBn = Groth16<Bn254>;
 pub fn verify(
     circuit_bytes: Vec<Vec<u8>>,
     proof_points: Vec<Vec<u8>>,
-    inputs: Vec<(String, Vec<i32>)>,
+    inputs: Vec<(String, i32)>,
     gamma_abc_g1: Vec<Vec<u8>>
-) -> bool{
+) -> Vec<u8>{
     let vk: ark_groth16::VerifyingKey<Bn<Config>> = Groth16VerifyingKey { 
         alpha_g1: proof_points[3].clone(), 
         beta_g2: proof_points[4].clone(), 
@@ -62,5 +60,10 @@ pub fn verify(
     let circom: CircomCircuit<Bn<Config>> = builder.build().unwrap();
     let inputs = circom.get_public_inputs().unwrap();
     // verify groth16 proof
-    GrothBn::verify_with_processed_vk(&pvk, &inputs, &proof.build()).unwrap()
+    if GrothBn::verify_with_processed_vk(&pvk, &inputs, &proof.build()).unwrap() == true{
+        vec![1]
+    }
+    else{
+        vec![0]
+    }
 }
