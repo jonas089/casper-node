@@ -15,7 +15,7 @@ use casper_types::{
 
 use super::{args::Args, Error, Runtime};
 use crate::{
-    core::resolvers::v1_function_index::FunctionIndex,
+    core::{resolvers::v1_function_index::FunctionIndex, runtime::circom},
     shared::host_function_costs::{Cost, HostFunction, DEFAULT_HOST_FUNCTION_NEW_DICTIONARY},
     storage::global_state::StateReader,
 };
@@ -1096,6 +1096,50 @@ where
                 let result = self.enable_contract_version(contract_package_hash, contract_hash)?;
 
                 Ok(Some(RuntimeValue::I32(api_error::i32_from(result))))
+            }
+            FunctionIndex::CircomVerifier => {
+                let (
+                    circuit_bytes_ptr,
+                    circuit_bytes_size,
+                    proof_points_ptr,
+                    proof_points_size,
+                    inputs_ptr,
+                    inputs_size,
+                    gamma_abc_g1_ptr,
+                    gamma_abc_g1_size,
+                    out_ptr,
+                    out_size
+                ) = 
+                Args::parse(args)?;
+                self.charge_host_function_call(
+                    &host_function_costs.circom_verifier,
+                    [
+                        circuit_bytes_ptr,
+                        circuit_bytes_size,
+                        proof_points_ptr,
+                        proof_points_size,
+                        inputs_ptr,
+                        inputs_size,
+                        gamma_abc_g1_ptr,
+                        gamma_abc_g1_size,
+                        out_ptr,
+                        out_size
+                    ]
+                )?;
+                let circuit_bytes = self.t_from_mem(circuit_bytes_ptr, circuit_bytes_size)?;
+                let proof_points = self.t_from_mem(proof_points_ptr, proof_points_size)?;
+                let inputs = self.t_from_mem(inputs_ptr, inputs_size)?;
+                let gamma_abc_g1 = self.t_from_mem(gamma_abc_g1_ptr, gamma_abc_g1_size)?;
+                let result: bool = circom::verify(
+                    circuit_bytes,
+                    proof_points, 
+                    inputs, 
+                    gamma_abc_g1
+                );
+                self.try_get_memory()?
+                    .set(out_ptr, &result.to_bytes().expect("Failed to unwrap boolean response!"))
+                    .map_err(|error| Error::Interpreter(error.into()))?;
+                Ok(Some(RuntimeValue::I32(0)))
             }
         }
     }
