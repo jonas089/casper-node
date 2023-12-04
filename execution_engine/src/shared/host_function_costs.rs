@@ -291,7 +291,7 @@ pub struct HostFunctionCosts {
     /// Cost of calling the `enable_contract_version` host function.
     pub enable_contract_version: HostFunction<[Cost; 4]>,
     /// Cost of calling the `circom verifier` host function.
-    pub circom_verifier: HostFunction<[Cost; 10]>,
+    pub circom_verifier: HostFunction<[Cost; 4]>,
 }
 
 impl Default for HostFunctionCosts {

@@ -1099,14 +1099,8 @@ where
             }
             FunctionIndex::CircomVerifier => {
                 let (
-                    circuit_bytes_ptr,
-                    circuit_bytes_size,
-                    proof_points_ptr,
-                    proof_points_size,
-                    inputs_ptr,
-                    inputs_size,
-                    gamma_abc_g1_ptr,
-                    gamma_abc_g1_size,
+                    input_ptr,
+                    input_size,
                     out_ptr,
                     out_size
                 ) = 
@@ -1114,27 +1108,15 @@ where
                 self.charge_host_function_call(
                     &host_function_costs.circom_verifier,
                     [
-                        circuit_bytes_ptr,
-                        circuit_bytes_size,
-                        proof_points_ptr,
-                        proof_points_size,
-                        inputs_ptr,
-                        inputs_size,
-                        gamma_abc_g1_ptr,
-                        gamma_abc_g1_size,
+                        input_ptr,
+                        input_size,
                         out_ptr,
                         out_size
                     ]
                 )?;
-                let circuit_bytes = self.t_from_mem(circuit_bytes_ptr, circuit_bytes_size)?;
-                let proof_points = self.t_from_mem(proof_points_ptr, proof_points_size)?;
-                let inputs = self.t_from_mem(inputs_ptr, inputs_size)?;
-                let gamma_abc_g1 = self.t_from_mem(gamma_abc_g1_ptr, gamma_abc_g1_size)?;
-                let result: Vec<u8> = circom::verify(
-                    circuit_bytes,
-                    proof_points, 
-                    inputs, 
-                    gamma_abc_g1
+                let input = self.t_from_mem(input_ptr, input_size)?;
+                let result: [u8;1] = circom::verify(
+                    input,
                 );
                 self.try_get_memory()?
                     .set(out_ptr, &result.to_bytes().expect("Failed to unwrap boolean response!"))

@@ -14,33 +14,50 @@ use ark_bn254::{Bn254, Config, G1Affine, G2Affine};
 use ark_circom::{circom::R1CSFile, WitnessCalculator};
 extern crate tempfile;
 use tempfile::NamedTempFile;
+use serde::{Serialize, Deserialize};
+use serde_json;
 
 type GrothBn = Groth16<Bn254>;
 
+
+#[derive(Serialize, Deserialize)]
+struct CircomInput{
+    alpha_g1: Vec<u8>,
+    beta_g2: Vec<u8>,
+    delta_g2: Vec<u8>,
+    gamma_g2: Vec<u8>,
+    gamma_abc_g1: Vec<Vec<u8>>,
+    a: Vec<u8>,
+    b: Vec<u8>,
+    c: Vec<u8>,
+    circuit_wasm: Vec<u8>,
+    circuit_r1cs: Vec<u8>,
+    inputs: Vec<(String, i32)>
+}
+
+
 #[doc(hidden)]
 pub fn verify(
-    circuit_bytes: Vec<Vec<u8>>,
-    proof_points: Vec<Vec<u8>>,
-    inputs: Vec<(String, i32)>,
-    gamma_abc_g1: Vec<Vec<u8>>
-) -> Vec<u8>{
+    circom_input: Vec<u8>
+) -> [u8;1]{
+    let input: CircomInput = serde_json::from_slice(&circom_input).unwrap();
     let vk: ark_groth16::VerifyingKey<Bn<Config>> = Groth16VerifyingKey { 
-        alpha_g1: proof_points[3].clone(), 
-        beta_g2: proof_points[4].clone(), 
-        delta_g2: proof_points[5].clone(),
-        gamma_g2: proof_points[6].clone(), 
-        gamma_abc_g1: gamma_abc_g1
+        alpha_g1: input.alpha_g1,
+        beta_g2: input.beta_g2, 
+        delta_g2: input.delta_g2,
+        gamma_g2: input.gamma_g2, 
+        gamma_abc_g1: input.gamma_abc_g1
     }.build();
     let proof: Groth16Proof = Groth16Proof{
-        a: proof_points[0].clone(),
-        b: proof_points[1].clone(),
-        c: proof_points[2].clone()
+        a: input.a,
+        b: input.b,
+        c: input.c
     };
     let pvk: ark_groth16::PreparedVerifyingKey<Bn<Config>> = GrothBn::process_vk(&vk).unwrap();
     let mut wasm_file = NamedTempFile::new().unwrap();
     let mut r1cs_file = NamedTempFile::new().unwrap();
-    let _ = wasm_file.write_all(&circuit_bytes[0]);
-    let _ = r1cs_file.write_all(&circuit_bytes[1]);
+    let _ = wasm_file.write_all(&input.circuit_wasm);
+    let _ = r1cs_file.write_all(&input.circuit_r1cs);
     wasm_file.flush().unwrap();
     r1cs_file.flush().unwrap();
     let wasm_path: tempfile::TempPath = wasm_file.into_temp_path();
@@ -51,8 +68,8 @@ pub fn verify(
     ).unwrap();
     // Insert our public inputs as key value pairs
     let mut builder: CircomBuilder<Bn<Config>> = CircomBuilder::new(cfg);
-    if inputs.len() > 0{
-        for (key, value) in inputs{
+    if input.inputs.len() > 0{
+        for (key, value) in input.inputs{
             builder.push_input(key, value);
         };
     }
@@ -61,9 +78,9 @@ pub fn verify(
     let inputs = circom.get_public_inputs().unwrap();
     // verify groth16 proof
     if GrothBn::verify_with_processed_vk(&pvk, &inputs, &proof.build()).unwrap() == true{
-        vec![1]
+        [1]
     }
     else{
-        vec![0]
+        [0]
     }
 }
