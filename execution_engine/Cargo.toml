@@ -58,7 +58,7 @@ ark-groth16 = { version = "=0.4.0", default-features = false, features = ["paral
 # rand = { version = "0.8", default-features = false, features = ["std_rng"]}
 num-bigint = "0.4.3"
 ark-serialize = { version = "0.4", features = ["derive"] }
-
+tempfile = "3.8.1"
 [dev-dependencies]
 assert_matches = "1.3.0"
 casper-types = { path = "../types", features = ["datasize", "json-schema", "testing"] }

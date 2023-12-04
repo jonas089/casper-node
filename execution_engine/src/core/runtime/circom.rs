@@ -14,29 +14,17 @@ use ark_circom::ethereum::{Proof, VerifyingKey};
 use ark_circom::{CircomConfig, CircomBuilder, CircomCircuit};
 use ark_bn254::{Bn254, Config, G1Affine, G2Affine};
 use ark_circom::{circom::R1CSFile, WitnessCalculator};
-
+extern crate tempfile;
+use tempfile::NamedTempFile;
 
 type GrothBn = Groth16<Bn254>;
 
 #[doc(hidden)]
 pub fn verify(
-    // Raw circuit
     circuit_bytes: Vec<Vec<u8>>,
-    // Groth16Proof
     proof_points: Vec<Vec<u8>>,
-    /*a: Vec<u8>,
-    b: Vec<u8>,
-    c: Vec<u8>,*/
-    // Public inputs
     inputs: Vec<(String, Vec<i32>)>,
-    // Groth16VerifyingKey
     gamma_abc_g1: Vec<Vec<u8>>
-    /*
-    alpha_g1: Vec<u8>,
-    beta_g2: Vec<u8>,
-    delta_g2: Vec<u8>,
-    gamma_g2: Vec<u8>,
-    */
 ) -> bool{
     let vk: ark_groth16::VerifyingKey<Bn<Config>> = Groth16VerifyingKey { 
         alpha_g1: proof_points[3].clone(), 
@@ -51,21 +39,28 @@ pub fn verify(
         c: proof_points[2].clone()
     };
     let pvk: ark_groth16::PreparedVerifyingKey<Bn<Config>> = GrothBn::process_vk(&vk).unwrap();
-    let r1cs: R1CSFile<Bn254> = R1CSFile::new(BufReader::new(Cursor::new(&circuit_bytes[0]))).unwrap();
-    //... cfg as tempfile? => poor design choice on arkwork's end
-    //... figure out how to construct Builder without tempfile if possible
-
+    let mut wasm_file = NamedTempFile::new().unwrap();
+    let mut r1cs_file = NamedTempFile::new().unwrap();
+    let _ = wasm_file.write_all(&circuit_bytes[0]);
+    let _ = r1cs_file.write_all(&circuit_bytes[1]);
+    wasm_file.flush().unwrap();
+    r1cs_file.flush().unwrap();
+    let wasm_path: tempfile::TempPath = wasm_file.into_temp_path();
+    let r1cs_path: tempfile::TempPath = r1cs_file.into_temp_path();
+    let cfg = CircomConfig::<Bn254>::new(
+        wasm_path,
+        r1cs_path
+    ).unwrap();
+    // Insert our public inputs as key value pairs
+    let mut builder: CircomBuilder<Bn<Config>> = CircomBuilder::new(cfg);
     if inputs.len() > 0{
         for (key, value) in inputs{
-            // builder.push_input(key, *value);
+            builder.push_input(key, value);
         };
     }
-    /* 
+    
     let circom: CircomCircuit<Bn<Config>> = builder.build().unwrap();
     let inputs = circom.get_public_inputs().unwrap();
     // verify groth16 proof
-    GrothBn::verify_with_processed_vk(&pvk, &inputs, &proof).unwrap()
-    */
-    todo!("Finish arkworks circom implementation!");
-    false
+    GrothBn::verify_with_processed_vk(&pvk, &inputs, &proof.build()).unwrap()
 }
