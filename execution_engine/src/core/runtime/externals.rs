@@ -1119,7 +1119,7 @@ where
                     input,
                 );
                 self.try_get_memory()?
-                    .set(out_ptr, &result.to_bytes().expect("Failed to unwrap boolean response!"))
+                    .set(out_ptr, &result)
                     .map_err(|error| Error::Interpreter(error.into()))?;
                 Ok(Some(RuntimeValue::I32(0)))
             }
