@@ -1114,13 +1114,13 @@ where
                         out_size
                     ]
                 )?;
-                let input: Vec<u8> = self.t_from_mem(input_ptr, input_size).expect("Failed to get type from memory!");
-                let result: [u8;1] = circom::verify(
-                    input,
-                );
-                self.try_get_memory().expect("Failed to get memory!")
+                let result: [u8; 1] =
+                    self.checked_memory_slice(input_ptr as usize, input_size as usize, |input| {
+                        circom::verify(input)
+                })?;
+                self.try_get_memory().unwrap()
                     .set(out_ptr, &result)
-                    .expect("Exception in set output!");//.map_err(|error| Error::Interpreter(error.into()))?;
+                    .map_err(|error| Error::Interpreter(error.into()))?;
                 Ok(Some(RuntimeValue::I32(0)))
             }
         }

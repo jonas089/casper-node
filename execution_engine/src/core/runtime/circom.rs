@@ -37,8 +37,8 @@ struct CircomInput{
 
 
 #[doc(hidden)]
-pub fn verify(
-    circom_input: Vec<u8> 
+pub fn verify<T: AsRef<[u8]>>(
+    circom_input: T
 ) -> [u8;1]{
 
 
