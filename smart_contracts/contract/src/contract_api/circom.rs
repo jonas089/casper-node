@@ -8,7 +8,7 @@ pub fn circom_verifier(inputs: Vec<u8>) -> [u8;1]{
     let result = unsafe {
         ext_ffi::casper_circom_verifier(
             inputs.as_ptr(),
-            1,
+            inputs.len(),
             res.as_mut_ptr(),
             1
         )
