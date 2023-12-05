@@ -40,7 +40,7 @@ struct CircomInput{
 pub fn verify<T: AsRef<[u8]>>(
     circom_input: T
 ) -> [u8;1]{
-    let input: CircomInput = serde_json::from_slice(&circom_input).unwrap(); 
+    let input: CircomInput = serde_json::from_slice(&circom_input.as_ref()).unwrap(); 
     let vk: ark_groth16::VerifyingKey<Bn<Config>> = Groth16VerifyingKey { 
         alpha_g1: input.alpha_g1,
         beta_g2: input.beta_g2, 
