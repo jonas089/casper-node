@@ -1101,6 +1101,8 @@ where
                 let (
                     input_ptr,
                     input_size,
+                    circuit_ptr,
+                    circuit_size,
                     out_ptr,
                     out_size
                 ) = 
@@ -1110,13 +1112,17 @@ where
                     [
                         input_ptr,
                         input_size,
+                        circuit_ptr,
+                        circuit_size,
                         out_ptr,
                         out_size
                     ]
                 )?;
                 let result: [u8; 1] =
                     self.checked_memory_slice(input_ptr as usize, input_size as usize, |input| {
-                        circom::verify(input)
+                        self.checked_memory_slice(circuit_ptr as usize, circuit_size as usize, |circuit|{
+                            circom::verify(input, circuit)
+                        }).expect("Failed to resolve verifier result in runtime!")
                 })?;
                 self.try_get_memory().unwrap()
                     .set(out_ptr, &result)

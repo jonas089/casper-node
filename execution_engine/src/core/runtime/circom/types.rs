@@ -3,14 +3,13 @@
     * Groth16VerifyingKey
     * CircomProof
 */
-use std::collections::HashMap;
-
 use ark_serialize::CanonicalDeserialize;
 use ark_ec::{
     bn::Bn,
     short_weierstrass::{self as sw}
 };
 use ark_bn254::{Config, G1Affine, G2Affine};
+use serde::{Serialize, Deserialize};
 
 #[derive(Default, Clone)]
 pub struct Groth16Proof{
@@ -59,12 +58,21 @@ impl Groth16VerifyingKey{
     }
 }
 
-#[derive(Default, Clone)]
-pub struct CircomProof{
-    pub hash: String,
-    pub vk: Groth16VerifyingKey,
+#[derive(Serialize, Deserialize)]
+pub struct CircomInput{
+    pub alpha_g1: Vec<u8>,
+    pub beta_g2: Vec<u8>,
+    pub delta_g2: Vec<u8>,
+    pub gamma_g2: Vec<u8>,
+    pub gamma_abc_g1: Vec<Vec<u8>>,
+    pub a: Vec<u8>,
+    pub b: Vec<u8>,
+    pub c: Vec<u8>,
+    pub inputs: Vec<(String, i32)>
+}
 
-    pub inputs: Option<HashMap<String, i32>>,
-    pub proof: Groth16Proof,
-    pub circuit: String,    
+#[derive(Serialize, Deserialize)]
+pub struct CircomCircuitInput{
+    pub circuit_wasm: Vec<u8>,
+    pub circuit_r1cs: Vec<u8>
 }
