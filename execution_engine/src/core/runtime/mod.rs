@@ -6,7 +6,7 @@ mod handle_payment_internal;
 mod host_function_flag;
 mod mint_internal;
 pub mod stack;
-mod circom;
+pub mod circom;
 mod standard_payment_internal;
 mod utils;
 
