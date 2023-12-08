@@ -18,9 +18,9 @@ use serde_json;
 type GrothBn = Groth16<Bn254>;
 
 #[doc(hidden)]
-pub fn verify<T: AsRef<[u8]>>(
+pub fn verify<T: AsRef<[u8]>, C: AsRef<[u8]>>(
     circom_input: T,
-    circom_circuit: T
+    circom_circuit: C
 ) -> [u8;1]{
     let input: CircomInput = serde_json::from_slice(&circom_input.as_ref()).unwrap(); 
     let circuit: CircomCircuitInput = serde_json::from_slice(&circom_circuit.as_ref()).unwrap();
