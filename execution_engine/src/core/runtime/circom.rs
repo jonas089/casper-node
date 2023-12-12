@@ -1,16 +1,12 @@
+/// Crate with elliptic curve types from arkwork's circom-compat & deps
 pub mod types;
 use types::{CircomInput, CircomCircuitInput, Groth16Proof, Groth16VerifyingKey};
 use std::io::prelude::*;
-use ark_groth16::{Groth16, ProvingKey};
+use ark_groth16::Groth16;
 use ark_crypto_primitives::snark::SNARK;
-use num_bigint::BigInt;
-use ark_ec::{
-    bn::Bn
-};
-use ark_serialize::{CanonicalSerialize, CanonicalDeserialize};
-use ark_circom::ethereum::{Proof, VerifyingKey};
+use ark_ec::bn::Bn;
 use ark_circom::{CircomConfig, CircomBuilder, CircomCircuit};
-use ark_bn254::{Bn254, Config, G1Affine, G2Affine};
+use ark_bn254::{Bn254, Config};
 extern crate tempfile;
 use tempfile::NamedTempFile;
 use serde_json;
