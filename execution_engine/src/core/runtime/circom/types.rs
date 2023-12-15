@@ -54,5 +54,5 @@ impl Groth16VerifyingKey{
 pub struct CircomProof{
     pub vk: Vec<u8>,
     pub proof: Vec<u8>,
-    pub inputs: Vec<u8>
+    pub inputs: Vec<Vec<u8>>
 }
