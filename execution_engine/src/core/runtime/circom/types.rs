@@ -1,14 +1,6 @@
-/* required types from exercise-project-6
-    * Groth16Proof
-    * Groth16VerifyingKey
-    * CircomProof
-*/
 use ark_serialize::CanonicalDeserialize;
-use ark_ec::{
-    bn::Bn,
-    short_weierstrass::{self as sw}
-};
-use ark_bn254::{Config, G1Affine, G2Affine};
+use ark_ec::{short_weierstrass::{self as sw}, bls12::Bls12};
+use ark_bls12_377::{Config, G1Affine, G2Affine};
 use serde::{Serialize, Deserialize};
 
 #[derive(Default, Clone)]
@@ -19,7 +11,7 @@ pub struct Groth16Proof{
 }
 
 impl Groth16Proof{
-    pub fn build(&self) -> ark_groth16::Proof<Bn<Config>>{
+    pub fn build(&self) -> ark_groth16::Proof<Bls12<Config>>{
         ark_groth16::Proof{
         a: G1Affine::deserialize_uncompressed(&*self.a).unwrap(),
         b: G2Affine::deserialize_uncompressed(&*self.b).unwrap(),
@@ -38,13 +30,13 @@ pub struct Groth16VerifyingKey{
 }
 
 impl Groth16VerifyingKey{
-    pub fn build(&self) -> ark_groth16::VerifyingKey<Bn<Config>>{
-        let alpha_g1: sw::Affine<ark_bn254::g1::Config> = G1Affine::deserialize_uncompressed(&*self.alpha_g1).unwrap();
-        let beta_g2: sw::Affine<ark_bn254::g2::Config> = G2Affine::deserialize_uncompressed(&*self.beta_g2).unwrap();
-        let gamma_g2: sw::Affine<ark_bn254::g2::Config> = G2Affine::deserialize_uncompressed(&*self.gamma_g2).unwrap();
-        let delta_g2: sw::Affine<ark_bn254::g2::Config> = G2Affine::deserialize_uncompressed(&*self.delta_g2).unwrap();
+    pub fn build(&self) -> ark_groth16::VerifyingKey<Bls12<Config>>{
+        let alpha_g1: sw::Affine<ark_bls12_377::g1::Config> = G1Affine::deserialize_uncompressed(&*self.alpha_g1).unwrap();
+        let beta_g2: sw::Affine<ark_bls12_377::g2::Config> = G2Affine::deserialize_uncompressed(&*self.beta_g2).unwrap();
+        let gamma_g2: sw::Affine<ark_bls12_377::g2::Config> = G2Affine::deserialize_uncompressed(&*self.gamma_g2).unwrap();
+        let delta_g2: sw::Affine<ark_bls12_377::g2::Config> = G2Affine::deserialize_uncompressed(&*self.delta_g2).unwrap();
 
-        let mut gamma_abc_g1: Vec<sw::Affine<ark_bn254::g1::Config>> = Vec::new();
+        let mut gamma_abc_g1: Vec<sw::Affine<ark_bls12_377::g1::Config>> = Vec::new();
         for gamma_abc in self.gamma_abc_g1.clone(){
             gamma_abc_g1.push(G1Affine::deserialize_uncompressed(&*gamma_abc).unwrap());
         };
@@ -59,20 +51,8 @@ impl Groth16VerifyingKey{
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct CircomInput{
-    pub alpha_g1: Vec<u8>,
-    pub beta_g2: Vec<u8>,
-    pub delta_g2: Vec<u8>,
-    pub gamma_g2: Vec<u8>,
-    pub gamma_abc_g1: Vec<Vec<u8>>,
-    pub a: Vec<u8>,
-    pub b: Vec<u8>,
-    pub c: Vec<u8>,
-    pub inputs: Vec<(String, i32)>
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct CircomCircuitInput{
-    pub circuit_wasm: Vec<u8>,
-    pub circuit_r1cs: Vec<u8>
+pub struct CircomProof{
+    pub vk: Vec<u8>,
+    pub proof: Vec<u8>,
+    pub inputs: Vec<u8>
 }

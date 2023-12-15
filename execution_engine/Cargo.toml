@@ -53,12 +53,12 @@ uuid = { version = "0.8.1", features = ["serde", "v4"] }
 ark-crypto-primitives = { version = "= 0.4.0" }
 ark-ec = { version= "= 0.4.1", default-features = false }
 ark-circom = { git = "https://github.com/jonas089/circom-compat" }
-ark-bn254 = "0.4.0"
+ark-bls12-377 = "0.4.0"
 ark-groth16 = { version = "=0.4.0", default-features = false, features = ["parallel"] }
 # rand = { version = "0.8", default-features = false, features = ["std_rng"]}
 num-bigint = "0.4.3"
 ark-serialize = { version = "0.4", features = ["derive"] }
-tempfile = "3.8.1"
+
 [dev-dependencies]
 assert_matches = "1.3.0"
 casper-types = { path = "../types", features = ["datasize", "json-schema", "testing"] }

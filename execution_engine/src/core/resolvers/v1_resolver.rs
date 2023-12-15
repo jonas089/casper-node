@@ -246,7 +246,7 @@ impl ModuleImportResolver for RuntimeModuleImportResolver {
                 FunctionIndex::EnableContractVersion.into(),
             ),
             "casper_circom_verifier" => FuncInstance::alloc_host(
-                Signature::new(&[ValueType::I32; 6][..], Some(ValueType::I32)),
+                Signature::new(&[ValueType::I32; 4][..], Some(ValueType::I32)),
                 FunctionIndex::CircomVerifier.into(),
             ),
             _ => {

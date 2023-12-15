@@ -1,62 +1,25 @@
 /// Crate with elliptic curve types from arkwork's circom-compat & deps
 pub mod types;
-use types::{CircomInput, CircomCircuitInput, Groth16Proof, Groth16VerifyingKey};
-use std::io::prelude::*;
-use ark_groth16::Groth16;
+use ark_serialize::CanonicalDeserialize;
+use types::CircomProof;
+use ark_groth16::{Groth16, Proof, PreparedVerifyingKey};
 use ark_crypto_primitives::snark::SNARK;
-use ark_ec::bn::Bn;
-use ark_circom::{CircomConfig, CircomBuilder, CircomCircuit};
-use ark_bn254::{Bn254, Config};
-extern crate tempfile;
-use tempfile::NamedTempFile;
+use ark_ec::bls12::Bls12;
+use ark_bls12_377::{Bls12_377, Config};
 use serde_json;
 
-type GrothBn = Groth16<Bn254>;
+type GrothBn = Groth16<Bls12_377>;
 
 #[doc(hidden)]
-pub fn verify<T: AsRef<[u8]>, C: AsRef<[u8]>>(
-    circom_input: T,
-    circom_circuit: C
+pub fn verify<T: AsRef<[u8]>>(
+    proof: T
 ) -> [u8;1]{
-    let input: CircomInput = serde_json::from_slice(&circom_input.as_ref()).unwrap(); 
-    let circuit: CircomCircuitInput = serde_json::from_slice(&circom_circuit.as_ref()).unwrap();
-    let vk: ark_groth16::VerifyingKey<Bn<Config>> = Groth16VerifyingKey { 
-        alpha_g1: input.alpha_g1,
-        beta_g2: input.beta_g2, 
-        delta_g2: input.delta_g2,
-        gamma_g2: input.gamma_g2, 
-        gamma_abc_g1: input.gamma_abc_g1
-    }.build();
-    let proof: Groth16Proof = Groth16Proof{
-        a: input.a,
-        b: input.b,
-        c: input.c
-    };
-    let pvk: ark_groth16::PreparedVerifyingKey<Bn<Config>> = GrothBn::process_vk(&vk).unwrap();
-    let mut wasm_file: NamedTempFile = NamedTempFile::new().unwrap();
-    let mut r1cs_file: NamedTempFile = NamedTempFile::new().unwrap();
-    let _ = wasm_file.write_all(&circuit.circuit_wasm);
-    let _ = r1cs_file.write_all(&circuit.circuit_r1cs);
-    wasm_file.flush().unwrap();
-    r1cs_file.flush().unwrap();
-    let wasm_path: tempfile::TempPath = wasm_file.into_temp_path();
-    let r1cs_path: tempfile::TempPath = r1cs_file.into_temp_path();
-    let cfg: CircomConfig<Bn<Config>> = CircomConfig::<Bn254>::new(
-        wasm_path,
-        r1cs_path
-    ).unwrap();
-    // Insert our public inputs as key value pairs
-    let mut builder: CircomBuilder<Bn<Config>> = CircomBuilder::new(cfg);
-    if input.inputs.len() > 0{
-        for (key, value) in input.inputs{
-            builder.push_input(key, value);
-        };
-    }
-    
-    let circom: CircomCircuit<Bn<Config>> = builder.build().unwrap();
-    let inputs = circom.get_public_inputs().unwrap();
+    let circom_proof: CircomProof = serde_json::from_slice(&proof.as_ref()).unwrap(); 
+    let deserialized_inputs = Vec::deserialize_uncompressed(&mut circom_proof.inputs.as_slice()).unwrap();
+    let deserialized_proof: Proof<Bls12<Config>> = Proof::deserialize_uncompressed(&mut circom_proof.proof.as_slice()).unwrap();
+    let deserialized_vk: PreparedVerifyingKey<Bls12<Config>> = PreparedVerifyingKey::deserialize_uncompressed(&mut circom_proof.vk.as_slice()).unwrap(); 
     // verify groth16 proof
-    if GrothBn::verify_with_processed_vk(&pvk, &inputs, &proof.build()).unwrap() == true{
+    if GrothBn::verify_with_processed_vk(&deserialized_vk, &deserialized_inputs, &deserialized_proof).unwrap() == true{
         [1u8]
     }
     else{

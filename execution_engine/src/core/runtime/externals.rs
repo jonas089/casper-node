@@ -1099,10 +1099,8 @@ where
             }
             FunctionIndex::CircomVerifier => {
                 let (
-                    input_ptr,
-                    input_size,
-                    circuit_ptr,
-                    circuit_size,
+                    proof_ptr,
+                    proof_size,
                     out_ptr,
                     out_size
                 ) = 
@@ -1110,19 +1108,15 @@ where
                 self.charge_host_function_call(
                     &host_function_costs.circom_verifier,
                     [
-                        input_ptr,
-                        input_size,
-                        circuit_ptr,
-                        circuit_size,
+                        proof_ptr,
+                        proof_size,
                         out_ptr,
                         out_size
                     ]
                 )?;
                 let result: [u8; 1] =
-                    self.checked_memory_slice(input_ptr as usize, input_size as usize, |input| {
-                        self.checked_memory_slice(circuit_ptr as usize, circuit_size as usize, |circuit|{
-                            circom::verify(input, circuit)
-                        }).expect("Failed to resolve verifier result in runtime!")
+                    self.checked_memory_slice(proof_ptr as usize, proof_size as usize, |proof| {
+                            circom::verify(proof)
                 })?;
                 self.try_get_memory().unwrap()
                     .set(out_ptr, &result)

@@ -806,10 +806,8 @@ extern "C" {
         contract_hash_size: usize,
     ) -> i32;
     pub fn casper_circom_verifier(
-        inputs_ptr: *const u8,
-        inputs_size: usize,
-        circuit_ptr: *const u8,
-        circuit_size: usize,
+        proof_ptr: *const u8,
+        proof_size: usize,
         out_ptr: *const u8,
         out_size: usize
     ) -> i32;
