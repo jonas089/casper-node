@@ -16,6 +16,7 @@ base16 = "0.2.1"
 bincode = "1.3.1"
 casper-hashing = { version = "3.0.0", path = "../hashing" }
 casper-types = { version = "4.0.1", path = "../types", default-features = false, features = ["datasize", "gens", "json-schema"] }
+tempfile = "3.8.1"
 casper-wasm = { version = "0.46.0", default-features = false }
 casper-wasm-utils = "3.0.0"
 casper-wasmi = "0.13.2"

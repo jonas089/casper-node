@@ -5,6 +5,7 @@ mod externals;
 mod handle_payment_internal;
 mod host_function_flag;
 mod mint_internal;
+mod noir;
 pub mod stack;
 mod standard_payment_internal;
 mod utils;
