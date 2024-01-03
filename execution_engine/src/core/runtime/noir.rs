@@ -1,7 +1,7 @@
 use std::process::Command;
 use std::{path::PathBuf, fs::create_dir};
 use serde_json;
-mod types;
+pub mod types;
 use types::NoirProof;
 use tempfile::tempdir;
 use std::{fs, fs::File};
