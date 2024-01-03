@@ -8,7 +8,7 @@ use std::{fs, fs::File};
 use std::io::Write;
 
 #[doc(hidden)]
-pub fn verify_rollup_proof<T: AsRef<[u8]>>(
+pub fn verify<T: AsRef<[u8]>>(
     proof: T
 ) -> [u8;1]{
     let noir_proof: NoirProof = serde_json::from_slice(&proof.as_ref()).unwrap(); 
@@ -41,13 +41,13 @@ pub fn verify_rollup_proof<T: AsRef<[u8]>>(
         Err(msg) => panic!("{:?}", msg),
         Ok(file) => file,
     };
-    proof_file.write_all(&noir_proof.proof.as_bytes()).expect("Failed to write proof!");
+    proof_file.write_all(&noir_proof.proof).expect("Failed to write proof!");
     // empty verifier
     let mut verifier_file: File = match File::create(&temp_dir.join("Verifier.toml")) {
         Err(msg) => panic!("{:?}", msg),
         Ok(file) => file,
     };
-    verifier_file.write_all(&noir_proof.verifier.as_bytes()).expect("Failed to write verifier!");
+    verifier_file.write_all(&noir_proof.verifier).expect("Failed to write verifier!");
     // verify the proof
     let verify: std::process::Output = Command::new(nargo)
     .arg("verify")
