@@ -13,8 +13,8 @@ pub fn verify<T: AsRef<[u8]>>(
     proof: T
 ) -> [u8;1]{
     let noir_proof: NoirProof = serde_json::from_slice(&proof.as_ref()).unwrap(); 
-    let circuit: PathBuf = PathBuf::from("~/casper-node/execution_engine/src/core/runtime/circuits/rollup");
-    let nargo: PathBuf = PathBuf::from("~/casper-node/execution_engine/src/core/runtime/binaries/nargo-linux");
+    let circuit: PathBuf = PathBuf::from("execution_engine/src/core/runtime/circuits/rollup");
+    let nargo: PathBuf = PathBuf::from("execution_engine/src/core/runtime/binaries/nargo-linux");
     let temp_dir: tempfile::TempDir = tempdir().unwrap();
     let temp_dir: PathBuf = temp_dir.path().to_path_buf();
     let temp_src: PathBuf = temp_dir.join("src");
