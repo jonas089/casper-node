@@ -1,6 +1,7 @@
 use std::process::Command;
 use std::{path::PathBuf, fs::create_dir};
 use serde_json;
+use serde_json_wasm;
 pub mod types;
 use types::NoirProof;
 use tempfile::tempdir;
@@ -12,7 +13,7 @@ use std::env;
 pub fn verify<T: AsRef<[u8]>>(
     proof: T
 ) -> [u8;1]{
-    let noir_proof: NoirProof = serde_json::from_slice(&proof.as_ref()).unwrap(); 
+    let noir_proof: NoirProof = serde_json_wasm::from_slice(&proof.as_ref()).unwrap(); 
     let circuit: PathBuf = PathBuf::from("/home/casper/casper-node/execution_engine/src/core/runtime/circuits/rollup");
     let nargo: PathBuf = PathBuf::from("/home/casper/casper-node/execution_engine/src/core/runtime/binaries/nargo-linux");
     let temp_dir: tempfile::TempDir = tempdir().unwrap();
