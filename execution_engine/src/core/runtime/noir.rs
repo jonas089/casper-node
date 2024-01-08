@@ -38,7 +38,7 @@ pub fn verify<T: AsRef<[u8]>>(
     // write the proof and run the verify function
     let temp_proofs: PathBuf = temp_dir.join("proofs");
     create_dir(&temp_proofs).expect("Failed to create temp/proofs!");
-    let mut proof_file: File = match File::create(temp_proofs.join("vrf.proof")) {
+    let mut proof_file: File = match File::create(temp_proofs.join("rollup.proof")) {
         Err(msg) => panic!("{:?}", msg),
         Ok(file) => file,
     };
