@@ -62,6 +62,7 @@ pub fn verify<T: AsRef<[u8]>>(
     }
     else{
         let error = String::from_utf8_lossy(&verify.stderr);
+        panic!("Failed to verify: {:?}", error);
         [0u8]
     }
 }
