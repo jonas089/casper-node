@@ -43,12 +43,14 @@ pub fn verify<T: AsRef<[u8]>>(
         Ok(file) => file,
     };
     proof_file.write_all(&noir_proof.proof.as_bytes()).expect("Failed to write proof!");
+    drop(proof_file);
     // empty verifier
     let mut verifier_file: File = match File::create(&temp_dir.join("Verifier.toml")) {
         Err(msg) => panic!("{:?}", msg),
         Ok(file) => file,
     };
     verifier_file.write_all(&noir_proof.verifier.as_bytes()).expect("Failed to write verifier!");
+    drop(verifier_file);
     // verify the proof
     let verify: std::process::Output = Command::new(nargo)
     .arg("verify")
