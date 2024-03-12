@@ -7,5 +7,5 @@ edition = "2021"
 serde = {version="1.0.197", features=["derive"]}
 serde-json-wasm = "1.0.1"
 kairos-delta-tree = {path="../kairos-delta-tree", optional=true}
-casper-types = {git = "https://github.com/jonas089/casper-node", branch="kairos-1.5.6"}
+casper-types = {path="../types"}
 [features]

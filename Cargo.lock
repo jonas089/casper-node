@@ -7,7 +7,7 @@ name = "activate-bid"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -15,7 +15,7 @@ name = "add-associated-key"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -23,7 +23,7 @@ name = "add-bid"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -31,7 +31,7 @@ name = "add-gas-subcall"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -39,7 +39,7 @@ name = "add-update-associated-key"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -416,7 +416,7 @@ name = "auction-bidding"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -424,7 +424,7 @@ name = "auction-bids"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -548,7 +548,7 @@ name = "blake2b"
 version = "0.8.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -659,14 +659,14 @@ name = "call-contract"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
 name = "casper-contract"
 version = "4.0.0"
 dependencies = [
- "casper-types 4.0.1",
+ "casper-types",
  "hex_fmt",
  "version-sync",
  "wee_alloc",
@@ -678,7 +678,7 @@ version = "7.0.1"
 dependencies = [
  "casper-execution-engine",
  "casper-hashing",
- "casper-types 4.0.1",
+ "casper-types",
  "filesize",
  "humantime",
  "lmdb-rkv",
@@ -702,7 +702,7 @@ dependencies = [
  "casper-engine-test-support",
  "casper-execution-engine",
  "casper-hashing",
- "casper-types 4.0.1",
+ "casper-types",
  "casper-wasm",
  "clap 2.34.0",
  "criterion",
@@ -735,7 +735,7 @@ dependencies = [
  "base16",
  "bincode",
  "casper-hashing",
- "casper-types 4.0.1",
+ "casper-types",
  "casper-wasm",
  "casper-wasm-utils",
  "casper-wasmi",
@@ -783,7 +783,7 @@ dependencies = [
  "base16",
  "bincode",
  "blake2 0.9.2",
- "casper-types 4.0.1",
+ "casper-types",
  "criterion",
  "datasize",
  "hex",
@@ -836,7 +836,7 @@ dependencies = [
  "casper-execution-engine",
  "casper-hashing",
  "casper-json-rpc",
- "casper-types 4.0.1",
+ "casper-types",
  "datasize",
  "derive_more",
  "either",
@@ -956,31 +956,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "casper-types"
-version = "4.0.1"
-source = "git+https://github.com/jonas089/casper-node?branch=kairos-1.5.6#9f3995853204a18f17de9c022233d22aa14b9c37"
-dependencies = [
- "base16",
- "base64 0.13.1",
- "bitflags 1.3.2",
- "blake2 0.9.2",
- "ed25519-dalek",
- "hex",
- "hex_fmt",
- "k256",
- "num",
- "num-derive 0.3.3",
- "num-integer",
- "num-rational",
- "num-traits",
- "rand",
- "serde",
- "serde_bytes",
- "serde_json",
- "uint",
-]
-
-[[package]]
 name = "casper-updater"
 version = "0.3.0"
 dependencies = [
@@ -996,7 +971,7 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "base16",
- "casper-types 4.0.1",
+ "casper-types",
  "clap 3.2.25",
  "derive_more",
  "hex",
@@ -1209,7 +1184,7 @@ name = "contract-context"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -1217,7 +1192,7 @@ name = "contract-funds"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -1225,7 +1200,7 @@ name = "contract-funds-call"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -1255,7 +1230,7 @@ name = "counter-installer"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -1281,7 +1256,7 @@ name = "create-accounts"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -1289,7 +1264,7 @@ name = "create-purse-01"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -1297,7 +1272,7 @@ name = "create-purses"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -1327,7 +1302,7 @@ version = "0.1.0"
 dependencies = [
  "base16",
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -1613,7 +1588,7 @@ name = "delegate"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -1664,7 +1639,7 @@ name = "deserialize-error"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -1672,7 +1647,7 @@ name = "dictionary"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -1680,7 +1655,7 @@ name = "dictionary-call"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
  "dictionary",
 ]
 
@@ -1689,7 +1664,7 @@ name = "dictionary-item-key-length"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -1697,7 +1672,7 @@ name = "dictionary-read"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -1732,7 +1707,7 @@ name = "disable-contract"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -1747,7 +1722,7 @@ name = "do-nothing-stored"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -1755,7 +1730,7 @@ name = "do-nothing-stored-caller"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -1763,7 +1738,7 @@ name = "do-nothing-stored-upgrader"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
  "create-purse-01",
 ]
 
@@ -1838,7 +1813,7 @@ name = "ee-1071-regression"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -1846,7 +1821,7 @@ name = "ee-1129-regression"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -1854,7 +1829,7 @@ name = "ee-1217-regression"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -1862,7 +1837,7 @@ name = "ee-1225-regression"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -1870,7 +1845,7 @@ name = "ee-221-regression"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -1878,7 +1853,7 @@ name = "ee-401-regression"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -1886,7 +1861,7 @@ name = "ee-401-regression-call"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -1894,7 +1869,7 @@ name = "ee-441-rng-state"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -1902,7 +1877,7 @@ name = "ee-460-regression"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -1917,7 +1892,7 @@ name = "ee-536-regression"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -1925,7 +1900,7 @@ name = "ee-539-regression"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -1933,7 +1908,7 @@ name = "ee-549-regression"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -1941,7 +1916,7 @@ name = "ee-550-regression"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -1949,7 +1924,7 @@ name = "ee-572-regression-create"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -1957,7 +1932,7 @@ name = "ee-572-regression-escalate"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -1965,7 +1940,7 @@ name = "ee-584-regression"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -1973,7 +1948,7 @@ name = "ee-597-regression"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -1981,7 +1956,7 @@ name = "ee-598-regression"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -1989,7 +1964,7 @@ name = "ee-599-regression"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -1997,7 +1972,7 @@ name = "ee-601-regression"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -2005,7 +1980,7 @@ name = "ee-771-regression"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -2050,7 +2025,7 @@ name = "enable-contract"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -2067,7 +2042,7 @@ name = "endless-loop"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -2147,7 +2122,7 @@ name = "expensive-calculation"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -2176,7 +2151,7 @@ name = "faucet"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -2184,7 +2159,7 @@ name = "faucet-stored"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
  "faucet",
 ]
 
@@ -2230,7 +2205,7 @@ name = "finalize-payment"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -2400,7 +2375,7 @@ name = "get-arg"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -2408,7 +2383,7 @@ name = "get-blocktime"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -2416,7 +2391,7 @@ name = "get-call-stack-call-recursive-subcall"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
  "get-call-stack-recursive-subcall",
 ]
 
@@ -2425,7 +2400,7 @@ name = "get-call-stack-recursive-subcall"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -2433,7 +2408,7 @@ name = "get-caller"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -2441,7 +2416,7 @@ name = "get-caller-subcall"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -2449,7 +2424,7 @@ name = "get-payment-purse"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -2457,7 +2432,7 @@ name = "get-phase"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -2465,7 +2440,7 @@ name = "get-phase-payment"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -2484,7 +2459,7 @@ name = "gh-1470-regression"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -2492,7 +2467,7 @@ name = "gh-1470-regression-call"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
  "gh-1470-regression",
 ]
 
@@ -2501,7 +2476,7 @@ name = "gh-1688-regression"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -2509,7 +2484,7 @@ name = "gh-2280-regression"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -2517,7 +2492,7 @@ name = "gh-2280-regression-call"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -2525,7 +2500,7 @@ name = "gh-3097-regression"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -2533,7 +2508,7 @@ name = "gh-3097-regression-call"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -3118,7 +3093,7 @@ dependencies = [
  "casper-engine-test-support",
  "casper-execution-engine",
  "casper-hashing",
- "casper-types 4.0.1",
+ "casper-types",
  "clap 2.34.0",
  "lmdb-rkv",
  "rand",
@@ -3142,7 +3117,7 @@ name = "groups"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -3236,7 +3211,7 @@ name = "hello-world"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -3305,7 +3280,7 @@ dependencies = [
  "bincode",
  "casper-hashing",
  "casper-node",
- "casper-types 4.0.1",
+ "casper-types",
  "clap 4.2.7",
  "flate2",
  "serde",
@@ -3334,7 +3309,7 @@ name = "host-function-costs"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -3342,7 +3317,7 @@ name = "host-function-metrics"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
  "rand",
 ]
 
@@ -3478,7 +3453,7 @@ name = "increment-counter"
 version = "1.0.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -3619,7 +3594,7 @@ dependencies = [
 name = "kairos-risc0-types"
 version = "0.1.0"
 dependencies = [
- "casper-types 4.0.1 (git+https://github.com/jonas089/casper-node?branch=kairos-1.5.6)",
+ "casper-types",
  "kairos-delta-tree",
  "serde",
  "serde-json-wasm",
@@ -3630,7 +3605,7 @@ name = "key-management-thresholds"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -3689,7 +3664,7 @@ name = "list-authorization-keys"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -3697,7 +3672,7 @@ name = "list-named-keys"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -3758,7 +3733,7 @@ name = "main-purse"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -3766,7 +3741,7 @@ name = "manage-groups"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -3795,7 +3770,7 @@ name = "measure-gas-subcall"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -3882,7 +3857,7 @@ name = "mint-purse"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -3890,7 +3865,7 @@ name = "mint-transfer-proxy"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -3934,7 +3909,7 @@ name = "multisig-authorization"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -3942,7 +3917,7 @@ name = "named-dictionary-test"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -3950,7 +3925,7 @@ name = "named-keys"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -3958,7 +3933,7 @@ name = "named-keys-stored"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -3966,7 +3941,7 @@ name = "named-keys-stored-call"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -3974,7 +3949,7 @@ name = "named-purse-payment"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -4000,7 +3975,7 @@ name = "nctl-dictionary"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -4025,7 +4000,7 @@ name = "non-standard-payment"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -4243,7 +4218,7 @@ name = "ordered-transforms"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -4272,7 +4247,7 @@ name = "overwrite-uref-content"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -4745,7 +4720,7 @@ name = "purse-holder-stored"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -4753,7 +4728,7 @@ name = "purse-holder-stored-caller"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -4761,7 +4736,7 @@ name = "purse-holder-stored-upgrader"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -4862,7 +4837,7 @@ name = "random-bytes"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -4870,7 +4845,7 @@ name = "random-bytes-payment"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -4909,7 +4884,7 @@ name = "read-from-key"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -4917,7 +4892,7 @@ name = "redelegate"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -4943,7 +4918,7 @@ name = "refund-purse"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -4983,7 +4958,7 @@ name = "regression-20210707"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -4991,7 +4966,7 @@ name = "regression-20210831"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -4999,7 +4974,7 @@ name = "regression-20220204"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -5007,7 +4982,7 @@ name = "regression-20220204-call"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -5015,7 +4990,7 @@ name = "regression-20220204-nontrivial"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -5023,7 +4998,7 @@ name = "regression-20220207"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -5031,7 +5006,7 @@ name = "regression-20220208"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -5039,7 +5014,7 @@ name = "regression-20220211"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -5047,7 +5022,7 @@ name = "regression-20220211-call"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -5055,7 +5030,7 @@ name = "regression-20220222"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -5063,7 +5038,7 @@ name = "regression-add-bid"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -5071,7 +5046,7 @@ name = "regression-delegate"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -5079,7 +5054,7 @@ name = "regression-payment"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -5087,7 +5062,7 @@ name = "regression-transfer"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -5095,7 +5070,7 @@ name = "regression_20211110"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -5103,7 +5078,7 @@ name = "regression_20220119"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -5111,7 +5086,7 @@ name = "regression_20240105"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -5119,7 +5094,7 @@ name = "remove-associated-key"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -5171,7 +5146,7 @@ name = "revert"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -5674,7 +5649,7 @@ name = "set-action-thresholds"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -5773,7 +5748,7 @@ name = "simple-transfer"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -5837,7 +5812,7 @@ name = "state-initializer"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -5857,7 +5832,7 @@ name = "storage-costs"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -5972,7 +5947,7 @@ name = "system-contract-hashes"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -6012,7 +5987,7 @@ name = "test-payment-stored"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -6379,7 +6354,7 @@ name = "transfer-main-purse-to-new-purse"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -6387,7 +6362,7 @@ name = "transfer-main-purse-to-two-purses"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -6395,7 +6370,7 @@ name = "transfer-purse-to-account"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -6403,7 +6378,7 @@ name = "transfer-purse-to-account-stored"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
  "transfer-purse-to-account",
 ]
 
@@ -6412,7 +6387,7 @@ name = "transfer-purse-to-account-with-id"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -6420,7 +6395,7 @@ name = "transfer-purse-to-accounts"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -6428,7 +6403,7 @@ name = "transfer-purse-to-accounts-stored"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
  "transfer-purse-to-accounts",
 ]
 
@@ -6437,7 +6412,7 @@ name = "transfer-purse-to-accounts-subcall"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -6445,7 +6420,7 @@ name = "transfer-purse-to-public-key"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -6453,7 +6428,7 @@ name = "transfer-purse-to-purse"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -6461,7 +6436,7 @@ name = "transfer-to-account"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -6469,7 +6444,7 @@ name = "transfer-to-account-u512"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -6477,7 +6452,7 @@ name = "transfer-to-existing-account"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -6485,7 +6460,7 @@ name = "transfer-to-named-purse"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -6493,7 +6468,7 @@ name = "transfer-to-public-key"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -6501,7 +6476,7 @@ name = "transfer-to-purse"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -6558,7 +6533,7 @@ name = "undelegate"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -6632,7 +6607,7 @@ name = "update-associated-key"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
@@ -7216,7 +7191,7 @@ name = "withdraw-bid"
 version = "0.1.0"
 dependencies = [
  "casper-contract",
- "casper-types 4.0.1",
+ "casper-types",
 ]
 
 [[package]]
