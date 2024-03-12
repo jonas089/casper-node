@@ -1,9 +1,6 @@
 use crate::{ext_ffi, unwrap_or_revert::UnwrapOrRevert};
 use casper_types::api_error;
-use alloc::{collections::BTreeSet, vec, vec::Vec, string::String};
-
 pub fn risc0_verifier<T: AsRef<[u8]>>(proof: T) -> [u8;1]{
-    // false
     let mut res: [u8;1] = [0;1];
     let result = unsafe {
         ext_ffi::casper_risc_zero_verifier(
