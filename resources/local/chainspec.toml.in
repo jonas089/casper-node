@@ -132,7 +132,8 @@ block_max_approval_count = 2600
 # The upper limit of total gas of all deploys in a block.
 block_gas_limit = 10_000_000_000_000
 # The limit of length of serialized payment code arguments.
-payment_args_max_length = 1024
+# Set to be much higher than usual to test with Risc0 proof structs.
+payment_args_max_length = 100_000_000
 # The limit of length of serialized session code arguments.
 # Set to be much higher than usual to test with Risc0 proof structs.
 session_args_max_length = 100_000_000
