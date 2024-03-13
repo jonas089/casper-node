@@ -247,7 +247,7 @@ impl ModuleImportResolver for RuntimeModuleImportResolver {
             ),
             "casper_risc_zero_verifier" => FuncInstance::alloc_host(
                 Signature::new(&[ValueType::I32; 4][..], Some(ValueType::I32)),
-                FunctionIndex::EnableContractVersion.into(),
+                FunctionIndex::RiscZeroVerifier.into(),
             ),
             _ => {
                 return Err(InterpreterError::Function(format!(
