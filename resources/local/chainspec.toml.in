@@ -132,7 +132,8 @@ block_gas_limit = 10_000_000_000_000
 # The limit of length of serialized payment code arguments.
 payment_args_max_length = 1024
 # The limit of length of serialized session code arguments.
-session_args_max_length = 1024
+# Set to be much higher than usual to test with Risc0 proof structs.
+session_args_max_length = 100_000_000
 # The minimum amount in motes for a valid native transfer.
 native_transfer_minimum_motes = 2_500_000_000
 # The maximum value to which `deploy_acceptor.timestamp_leeway` can be set in the config.toml file.
