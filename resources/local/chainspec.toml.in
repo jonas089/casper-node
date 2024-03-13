@@ -20,7 +20,7 @@ activation_point = '${TIMESTAMP}'
 name = 'casper-example'
 # The maximum size of an acceptable networking message in bytes.  Any message larger than this will
 # be rejected at the networking level.
-maximum_net_message_size = 100_000_000
+maximum_net_message_size = 25_165_824
 
 [core]
 # Era duration.
@@ -118,11 +118,9 @@ max_ttl = '2 hours'
 # The maximum number of other deploys a deploy can depend on (require to have been executed before it can execute).
 max_dependencies = 10
 # Maximum block size in bytes including deploys contained by the block.  0 means unlimited.
-# Try unlimited block size for Risc0 prototyping.
-max_block_size = 0
+max_block_size = 10_485_760
 # Maximum deploy size in bytes.  Size is of the deploy when serialized via ToBytes.
-# Increase max deploy size significantly for Risc0 prototyping.
-max_deploy_size = 100_000_000
+max_deploy_size = 1_048_576
 # The maximum number of non-transfer deploys permitted in a single block.
 block_max_deploy_count = 100
 # The maximum number of wasm-less transfer deploys permitted in a single block.
@@ -132,11 +130,9 @@ block_max_approval_count = 2600
 # The upper limit of total gas of all deploys in a block.
 block_gas_limit = 10_000_000_000_000
 # The limit of length of serialized payment code arguments.
-# Set to be much higher than usual to test with Risc0 proof structs.
-payment_args_max_length = 100_000_000
+payment_args_max_length = 1024
 # The limit of length of serialized session code arguments.
-# Set to be much higher than usual to test with Risc0 proof structs.
-session_args_max_length = 100_000_000
+session_args_max_length = 1024
 # The minimum amount in motes for a valid native transfer.
 native_transfer_minimum_motes = 2_500_000_000
 # The maximum value to which `deploy_acceptor.timestamp_leeway` can be set in the config.toml file.
@@ -251,7 +247,6 @@ transfer_to_account = { cost = 2_500_000_000, arguments = [0, 0, 0, 0, 0, 0, 0] 
 update_associated_key = { cost = 4_200, arguments = [0, 0, 0] }
 write = { cost = 14_000, arguments = [0, 0, 0, 980] }
 write_local = { cost = 9_500, arguments = [0, 1_800, 0, 520] }
-risc0_verifier = { cost = 10_000, arguments = [0,0,0,0]}
 
 [system_costs]
 wasmless_transfer_cost = 100_000_000
