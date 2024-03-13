@@ -118,9 +118,11 @@ max_ttl = '2 hours'
 # The maximum number of other deploys a deploy can depend on (require to have been executed before it can execute).
 max_dependencies = 10
 # Maximum block size in bytes including deploys contained by the block.  0 means unlimited.
-max_block_size = 10_485_760
+# Try unlimited block size for Risc0 prototyping.
+max_block_size = 0
 # Maximum deploy size in bytes.  Size is of the deploy when serialized via ToBytes.
-max_deploy_size = 1_048_576
+# Increase max deploy size significantly for Risc0 prototyping.
+max_deploy_size = 100_000_000
 # The maximum number of non-transfer deploys permitted in a single block.
 block_max_deploy_count = 100
 # The maximum number of wasm-less transfer deploys permitted in a single block.
